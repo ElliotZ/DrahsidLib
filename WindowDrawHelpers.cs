@@ -127,6 +127,23 @@ public static class WindowDrawHelpers {
         return ret;
     }
 
+    /// <summary>
+    /// Draw input text with a tooltip.
+    /// </summary>
+    /// <param name="label">Text used for the `label` parameter.</param>
+    /// <param name="cvar">Value to output to.</param>
+    /// <param name="tooltip">Tooltip to display for the float.</param>
+    /// <returns></returns>
+    public static bool DrawInputTextTooltip(string label, ref string cvar, string tooltip) {
+        bool ret = ImGui.InputText(label, ref cvar, 32);
+
+        if (tooltip.IsNullOrEmpty() == false) {
+            DrawTooltip(tooltip);
+        }
+
+        return ret;
+    }
+
     public static uint ColorToUint(Vector4 color) {
         return (uint)(((byte)(color.W * 255) << 24) |
                      ((byte)(color.X * 255) << 16)  |
