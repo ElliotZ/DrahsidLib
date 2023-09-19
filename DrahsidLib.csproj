@@ -15,13 +15,14 @@
 		<Deterministic>false</Deterministic>
 	</PropertyGroup>
 
+	<ItemGroup>
+        <None Remove=".gitattributes" />
+        <None Remove=".gitignore" />
+    </ItemGroup>
+
 	<PropertyGroup>
     	<DalamudLibPath>$(appdata)\XIVLauncher\addon\Hooks\dev\</DalamudLibPath>
     	<AssemblyVersion></AssemblyVersion>
-  	</PropertyGroup>
-  
-	<PropertyGroup Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))'">
-    	<DalamudLibPath>$(DALAMUD_HOME)/</DalamudLibPath>
   	</PropertyGroup>
   
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
