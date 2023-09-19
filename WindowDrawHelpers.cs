@@ -6,6 +6,8 @@ using System.Reflection.Emit;
 
 namespace DrahsidLib;
 
+public delegate void DrawToolTipDelegate(string label);
+
 /// <summary>
 /// Some helper functions for ImGui.
 /// </summary>
@@ -28,15 +30,21 @@ public static class WindowDrawHelpers {
         }
     }
 
+
     /// <summary>
     /// Draw a tooltip if the most recent item is hovered.
     /// </summary>
     /// <param name="label">Tooltip text.</param>
-    public static void DrawTooltip(string label) {
+    public static void DrawTooltipDefaultImpl(string label) {
         if (ImGui.IsItemHovered()) {
             ImGui.SetTooltip(label);
         }
     }
+
+    /// <summary>
+    /// Allow the ability to override the default DrawTooltip function (for using hide tooltips)
+    /// </summary>
+    public static DrawToolTipDelegate DrawTooltip = DrawTooltipDefaultImpl;
 
     /// <summary>
     /// Draws both a float slider, and an input. Supports using a tooltip.
