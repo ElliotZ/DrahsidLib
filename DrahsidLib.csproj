@@ -15,10 +15,6 @@
 		<Deterministic>false</Deterministic>
 	</PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="DalamudPackager" Version="2.1.11" />
-	</ItemGroup>
-
 	<PropertyGroup>
     	<DalamudLibPath>$(appdata)\XIVLauncher\addon\Hooks\dev\</DalamudLibPath>
     	<AssemblyVersion></AssemblyVersion>

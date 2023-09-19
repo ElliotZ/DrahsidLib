@@ -134,8 +134,8 @@ public static class WindowDrawHelpers {
     /// <param name="cvar">Value to output to.</param>
     /// <param name="tooltip">Tooltip to display for the float.</param>
     /// <returns></returns>
-    public static bool DrawInputTextTooltip(string label, ref string cvar, string tooltip) {
-        bool ret = ImGui.InputText(label, ref cvar, 32);
+    public static bool DrawInputTextTooltip(string label, ref string cvar, string tooltip, uint maxlength = 32) {
+        bool ret = ImGui.InputText(label, ref cvar, maxlength);
 
         if (tooltip.IsNullOrEmpty() == false) {
             DrawTooltip(tooltip);
