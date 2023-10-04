@@ -62,6 +62,16 @@ public unsafe partial class GameObjectWrapper {
         Address = obj.Address;
     }
 
+    public GameObjectWrapper(GameObject obj) {
+        if (obj == null) {
+            Service.Logger.Error("GameObjectWrapper was provided a bogus GameObject!");
+            return;
+        }
+
+        _DObject = obj;
+        Address = obj.Address;
+    }
+
     // I can't construct a new Dalamud.Game.ClientState.Objects.Types.GameObject, so we need to SearchById
     /// <summary>
     /// GameObjectWrapper --> Dalamud.Game.ClientState.Objects.Types.GameObject
