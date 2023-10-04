@@ -51,7 +51,7 @@ public unsafe struct GameCameraBase {
 /// </summary>
 [StructLayout(LayoutKind.Explicit, Size = 0x2B0)]
 public unsafe struct GameCamera {
-    [FieldOffset(0x00)] GameCameraBase CameraBase;
+    [FieldOffset(0x00)] public GameCameraBase CameraBase;
     [FieldOffset(0x114)] public float Distance; // "CurrentZoom"
     [FieldOffset(0x118)] public float MinDistance; // "MinZoom"
     [FieldOffset(0x11C)] public float MaxDistance; // "MaxZoom"
