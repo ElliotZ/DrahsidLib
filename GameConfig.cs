@@ -4,9 +4,9 @@ using FFXIVClientStructs.FFXIV.Common.Configuration;
 using System;
 using System.Collections.Generic;
 
-// Jacked from SimpleTweaks
-
 namespace DrahsidLib;
+
+// Jacked from SimpleTweaks
 
 public static unsafe class GameConfig {
     public class EntryWrapper {
@@ -66,7 +66,7 @@ public static unsafe class GameConfig {
 
         public uint ConfigCount => configBase->ConfigCount;
 
-        public GameConfigSection(ConfigBase* configBase, string[] ignoredNames = null) {
+        public GameConfigSection(ConfigBase* configBase, string[]? ignoredNames = null) {
             this.configBase = configBase;
 
             if (ignoredNames != null) {

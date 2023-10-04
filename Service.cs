@@ -1,33 +1,35 @@
-﻿using Dalamud.Data;
-using Dalamud.Game.ClientState.JobGauge;
-using Dalamud.Game.ClientState.Keys;
-using Dalamud.Game.ClientState.Objects;
-using Dalamud.Game.ClientState;
-using Dalamud.Game.Command;
-using Dalamud.Game.Gui;
+﻿using Dalamud.Game.ClientState.Objects;
 using Dalamud.IoC;
 using Dalamud.Plugin;
-using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game;
+using Dalamud.Plugin.Services;
 
 namespace DrahsidLib;
 
-public class Service
-{
+public class Service {
     [PluginService] public static DalamudPluginInterface Interface { get; private set; } = null!;
-    [PluginService] public static ChatGui ChatGui { get; private set; } = null!;
-    [PluginService] public static GameGui GameGui { get; private set; } = null!;
-    [PluginService] public static ClientState ClientState { get; private set; } = null!;
-    [PluginService] public static CommandManager CommandManager { get; private set; } = null!;
-    [PluginService] public static Condition Condition { get; private set; } = null!;
-    [PluginService] public static DataManager DataManager { get; private set; } = null!;
-    [PluginService] public static Framework Framework { get; private set; } = null!;
-    [PluginService] public static KeyState KeyState { get; private set; } = null!;
-    [PluginService] public static ObjectTable ObjectTable { get; private set; } = null!;
-    [PluginService] public static TargetManager TargetManager { get; private set; } = null!;
-    [PluginService] public static JobGauges JobGauges { get; private set; } = null!;
-    [PluginService] public static SigScanner SigScanner { get; private set; } = null!;
-    [PluginService] public static TargetManager Targets { get; private set; } = null!;
+    [PluginService] public static IChatGui ChatGui { get; private set; } = null!;
+    [PluginService] public static IGameGui GameGui { get; private set; } = null!;
+    [PluginService] public static IClientState ClientState { get; private set; } = null!;
+    [PluginService] public static ICommandManager CommandManager { get; private set; } = null!;
+    [PluginService] public static ICondition Condition { get; private set; } = null!;
+    [PluginService] public static IDataManager DataManager { get; private set; } = null!;
+    [PluginService] public static IFramework Framework { get; private set; } = null!;
+    [PluginService] public static IKeyState KeyState { get; private set; } = null!;
+    [PluginService] public static IObjectTable ObjectTable { get; private set; } = null!;
+    [PluginService] public static ITargetManager TargetManager { get; private set; } = null!;
+    [PluginService] public static IJobGauges JobGauges { get; private set; } = null!;
+    [PluginService] public static ISigScanner SigScanner { get; private set; } = null!;
+    [PluginService] public static ITargetManager Targets { get; private set; } = null!;
+    [PluginService] public static IPluginLog Logger { get; private set; } = null!;
 
-    public static unsafe GameCameraManager* CameraManager;
+    public static unsafe GameCameraManager* CameraManager { get; private set; } = null!;
+
+    public static void Initialize(DalamudPluginInterface pluginInterface) {
+        pluginInterface.Create<Service>();
+
+        unsafe {
+            CameraManager = GameCameraManager.Instance();
+        }
+    }
 }

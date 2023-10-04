@@ -1,10 +1,8 @@
-﻿using Dalamud.Interface;
-using Dalamud.Logging;
+﻿using Dalamud.Interface.Utility;
 using FFXIVClientStructs.FFXIV.Common.Math;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using ImGuiNET;
 using System;
-using System.Collections.Generic;
 
 namespace DrahsidLib;
 
@@ -68,7 +66,7 @@ public static unsafe class AddonToolkitHelper {
     /// <returns>Absolute (screen space) position of the node.</returns>
     public static Vector2 GetNodeAbsolutePosition(AtkResNode* node) {
         if (node == null) {
-            PluginLog.Warning("[GetNodeAbsolutePosition] Node is null!");
+            Service.Logger.Warning("[GetNodeAbsolutePosition] Node is null!");
             return Vector2.Zero;
         }
 
@@ -93,7 +91,7 @@ public static unsafe class AddonToolkitHelper {
     /// <returns>Total scale of the node.</returns>
     public static Vector2 GetNodeScale(AtkResNode* node) {
         if (node == null) {
-            PluginLog.Warning("[GetNodeScale] Node is null!");
+            Service.Logger.Warning("[GetNodeScale] Node is null!");
             return Vector2.One;
         }
 
@@ -114,7 +112,7 @@ public static unsafe class AddonToolkitHelper {
     /// <returns>Scaled size of the node.</returns>
     public static Vector2 GetNodeScaledSize(AtkResNode* node) {
         if (node == null) {
-            PluginLog.Warning("[GetNodeScaledSize] Node is null!");
+            Service.Logger.Warning("[GetNodeScaledSize] Node is null!");
             return Vector2.One;
         }
 
@@ -129,7 +127,7 @@ public static unsafe class AddonToolkitHelper {
     /// <returns>True if the node is visible.</returns>
     public static bool GetNodeVisible(AtkResNode* node) {
         if (node == null) {
-            PluginLog.Warning("[GetNodeVisible] Node is null!");
+            Service.Logger.Warning("[GetNodeVisible] Node is null!");
             return false;
         }
 
@@ -151,7 +149,7 @@ public static unsafe class AddonToolkitHelper {
     /// <returns>The offset of the anchor.</returns>
     public static Vector2 GetNodePositionAnchorOffset(AtkResNode* node, NodePositionAnchor anchor) {
         if (node == null) {
-            PluginLog.Warning("[GetNodePositionAnchorOffset] Node is null!");
+            Service.Logger.Warning("[GetNodePositionAnchorOffset] Node is null!");
             return Vector2.Zero;
         }
 
@@ -201,7 +199,7 @@ public static unsafe class AddonToolkitHelper {
     /// <returns></returns>
     public static Vector2 GetNodeAbsolutePositionForAnchor(AtkResNode* node, NodePositionAnchor anchor) {
         if (node == null) {
-            PluginLog.Warning("[GetNodeAbsolutePositionForAnchor] Node is null!");
+            Service.Logger.Warning("[GetNodeAbsolutePositionForAnchor] Node is null!");
             return Vector2.Zero;
         }
 
@@ -230,7 +228,7 @@ public static unsafe class AddonToolkitHelper {
     /// <returns>True if the point is within the node.</returns>
     public static bool GetPointIntersectsNode(AtkResNode* node, Vector2 point) {
         if (node == null) {
-            PluginLog.Warning("[GetPointIntersectsNode] Node is null!");
+            Service.Logger.Warning("[GetPointIntersectsNode] Node is null!");
             return false;
         }
 
@@ -251,7 +249,7 @@ public static unsafe class AddonToolkitHelper {
     /// <param name="InvisibleColor">Optional color of the outline for when the node is invisible.</param>
     public static void DrawOutline(AtkResNode* node, string name, uint BackgroundColor = 0x08000000, uint VisibleColor = 0xFF00FF00, uint InvisibleColor = 0xFF0000FF) {
         if (node == null) {
-            PluginLog.Warning("[DrawOutline] Node is null!");
+            Service.Logger.Warning("[DrawOutline] Node is null!");
             return;
         }
 
@@ -350,14 +348,14 @@ public unsafe class AddonNodeHelper {
                 Node->Width = (ushort)(value.X / scale.X);
             }
             else {
-                PluginLog.Warning("[AddonNodeHelper SizeScaled Setter] Invalid scale X value.");
+                Service.Logger.Warning("[AddonNodeHelper SizeScaled Setter] Invalid scale X value.");
             }
 
             if (scale.Y != 0) {
                 Node->Height = (ushort)(value.Y / scale.Y);
             }
             else {
-                PluginLog.Warning("[AddonNodeHelper SizeScaled Setter] Invalid scale Y value.");
+                Service.Logger.Warning("[AddonNodeHelper SizeScaled Setter] Invalid scale Y value.");
             }
         }
     }
@@ -388,14 +386,14 @@ public unsafe class AddonNodeHelper {
                 Node->ScaleX = (ushort)(value.X / scale.X);
             }
             else {
-                PluginLog.Warning("[AddonNodeHelper ScaleScaled Setter] Invalid scale X value.");
+                Service.Logger.Warning("[AddonNodeHelper ScaleScaled Setter] Invalid scale X value.");
             }
 
             if (scale.Y != 0) {
                 Node->ScaleY = (ushort)(value.Y / scale.Y);
             }
             else {
-                PluginLog.Warning("[AddonNodeHelper ScaleScaled Setter] Invalid scale Y value.");
+                Service.Logger.Warning("[AddonNodeHelper ScaleScaled Setter] Invalid scale Y value.");
             }
         }
     }

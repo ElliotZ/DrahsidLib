@@ -1,13 +1,10 @@
-﻿using System;
+﻿using Dalamud.Plugin;
 
 namespace DrahsidLib; 
 
 public static class DrahsidLib {
-    internal const string CameraManagerSig = "4C 8D 35 ?? ?? ?? ?? 85 D2";
-
-    public static unsafe void Initialize(DrawToolTipDelegate? DrawToolTipFn = null) {
-        Service.CameraManager = (GameCameraManager*)Service.SigScanner.GetStaticAddressFromSig(CameraManagerSig);
-        
+    public static void Initialize(DalamudPluginInterface pluginInterface, DrawToolTipDelegate? DrawToolTipFn = null) {
+        Service.Initialize(pluginInterface);
         if (DrawToolTipFn != null) {
             WindowDrawHelpers.DrawTooltip = DrawToolTipFn;
         }
