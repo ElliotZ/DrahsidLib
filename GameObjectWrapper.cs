@@ -38,27 +38,14 @@ public unsafe partial class GameObjectWrapper {
         }
     }
 
-    private ulong _LastTargetObjectId = 0;
-
-    /// <summary>
-    /// Internal GameObjectWrapper
-    /// </summary>
-    private GameObjectWrapper? _TargetObject;
-
-    /// <summary>
-    /// Gets the correlating GameObjectWrapper target
-    /// </summary>
     public GameObjectWrapper? TargetObject {
         get {
-            if (_TargetObject == null || _LastTargetObjectId != TargetObjectId) {
-                GameObject? target = Service.ObjectTable.SearchById(TargetObjectId);
-                _LastTargetObjectId = TargetObjectId;
-                if (target == null) {
-                    return null;
-                }
-                _TargetObject = new GameObjectWrapper(target);
+            GameObject? target = Service.ObjectTable.SearchById(TargetObjectId);
+            if (target == null) {
+                return null;
             }
-            return _TargetObject;
+
+            return new GameObjectWrapper(target.Address);
         }
     }
 
