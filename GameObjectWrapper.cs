@@ -20,7 +20,7 @@ public unsafe partial class GameObjectWrapper {
     /// <summary>
     /// Internal Dalamud Game Object
     /// </summary>
-    public GameObject? _DObject;
+    private GameObject? _DObject;
 
     /// <summary>
     /// Gets the correlating Dalamud Game Object
@@ -35,6 +35,27 @@ public unsafe partial class GameObjectWrapper {
         }
         set {
             _DObject = value;
+        }
+    }
+
+    /// <summary>
+    /// Internal GameObjectWrapper
+    /// </summary>
+    private GameObjectWrapper? _TargetObject;
+
+    /// <summary>
+    /// Gets the correlating GameObjectWrapper target
+    /// </summary>
+    public GameObjectWrapper? TargetObject {
+        get {
+            if (_TargetObject == null) {
+                GameObject? target = Service.ObjectTable.SearchById(TargetObjectId);
+                if (target == null) {
+                    return null;
+                }
+                _TargetObject = new GameObjectWrapper(target);
+            }
+            return _TargetObject;
         }
     }
 
@@ -62,6 +83,10 @@ public unsafe partial class GameObjectWrapper {
         Address = obj.Address;
     }
 
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="obj">Dalamud Game Object</param>
     public GameObjectWrapper(GameObject obj) {
         if (obj == null) {
             Service.Logger.Error("GameObjectWrapper was provided a bogus GameObject!");
@@ -132,8 +157,6 @@ public unsafe partial class GameObjectWrapper {
     public float HitboxRadius => Struct->HitboxRadius;
 
     public ulong TargetObjectId => DObject.TargetObjectId;
-
-    public GameObjectWrapper? TargetObject => (GameObjectWrapper?)DObject.TargetObject;
  
     public override string ToString() => DObject.ToString();
 }
