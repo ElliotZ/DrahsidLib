@@ -38,6 +38,8 @@ public unsafe partial class GameObjectWrapper {
         }
     }
 
+    private ulong _LastTargetObjectId = 0;
+
     /// <summary>
     /// Internal GameObjectWrapper
     /// </summary>
@@ -48,8 +50,9 @@ public unsafe partial class GameObjectWrapper {
     /// </summary>
     public GameObjectWrapper? TargetObject {
         get {
-            if (_TargetObject == null) {
+            if (_TargetObject == null || _LastTargetObjectId != TargetObjectId) {
                 GameObject? target = Service.ObjectTable.SearchById(TargetObjectId);
+                _LastTargetObjectId = TargetObjectId;
                 if (target == null) {
                     return null;
                 }
