@@ -23,6 +23,7 @@ public class Service {
     [PluginService] public static ITargetManager Targets { get; private set; } = null!;
     [PluginService] public static IPluginLog Logger { get; private set; } = null!;
     [PluginService] public static IGameInteropProvider GameInteropProvider { get; private set; } = null!;
+    [PluginService] public static IGameNetwork Network { get; private set; } = null!;
 
     public static unsafe GameCameraManager* CameraManager { get; private set; } = null!;
 
