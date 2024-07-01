@@ -7,7 +7,7 @@ using Dalamud.Plugin.Services;
 namespace DrahsidLib;
 
 public class Service {
-    [PluginService] public static DalamudPluginInterface Interface { get; private set; } = null!;
+    [PluginService] public static IDalamudPluginInterface Interface { get; private set; } = null!;
     [PluginService] public static IChatGui ChatGui { get; private set; } = null!;
     [PluginService] public static IGameGui GameGui { get; private set; } = null!;
     [PluginService] public static IClientState ClientState { get; private set; } = null!;
@@ -27,7 +27,7 @@ public class Service {
 
     public static unsafe GameCameraManager* CameraManager { get; private set; } = null!;
 
-    public static void Initialize(DalamudPluginInterface pluginInterface) {
+    public static void Initialize(IDalamudPluginInterface pluginInterface) {
         pluginInterface.Create<Service>();
 
         unsafe {
