@@ -4,7 +4,7 @@ using System;
 
 namespace DrahsidLib;
 
-public unsafe static class GameObject {
+public unsafe static class GameObjectExtensions {
     public unsafe static float GetCursorHeight(this IGameObject thisx)
     {
         return Marshal.PtrToStructure<float>(thisx.Address + 0x124);
