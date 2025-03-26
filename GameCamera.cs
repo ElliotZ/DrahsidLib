@@ -88,7 +88,7 @@ public unsafe struct GameCamera {
 [StructLayout(LayoutKind.Explicit, Size = 0x300)]
 public unsafe struct GameLobbyCamera {
     [FieldOffset(0x00)] public GameCamera Camera;
-    [FieldOffset(0x2F8)] public void* LobbyExcelSheet;
+    [FieldOffset(0x2F8)] public FFXIVClientStructs.FFXIV.Common.Component.Excel.ExcelSheet* LobbyExcelSheet;
 }
 
 /// <summary>

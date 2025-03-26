@@ -7,7 +7,7 @@ namespace DrahsidLib;
 public unsafe static class GameObjectExtensions {
     public unsafe static float GetCursorHeight(this IGameObject thisx)
     {
-        return Marshal.PtrToStructure<float>(thisx.Address + 0x124);
+        return Marshal.PtrToStructure<float>(thisx.Address + 0x114);
     }
 
     public unsafe static bool TargetIsTargetable(this IGameObject thisx) {

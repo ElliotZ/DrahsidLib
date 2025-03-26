@@ -4,7 +4,7 @@
 [assembly: System.Reflection.AssemblyProduct("DrahsidLib")]
 [assembly: System.Reflection.AssemblyTitle("DrahsidLib")]
 
-[assembly: System.Reflection.AssemblyVersion("1.1.0")]
+[assembly: System.Reflection.AssemblyVersion("1.2.0")]
 
 #if DEBUG
 [assembly: System.Reflection.AssemblyConfiguration("Debug")]
