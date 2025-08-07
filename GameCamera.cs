@@ -42,8 +42,8 @@ public unsafe struct GameCameraBase {
     [FieldOffset(0x90)] public float LookAtX;
     [FieldOffset(0x94)] public float LookAtZ;
     [FieldOffset(0x98)] public float LookAtY;
-    [FieldOffset(0x100)] public uint UnkUInt;
-    [FieldOffset(0x108)] public uint UnkFlags;
+    [FieldOffset(0x110)] public uint UnkUInt;
+    [FieldOffset(0x118)] public uint UnkFlags;
 }
 
 /// <summary>
@@ -121,7 +121,7 @@ public struct GameCamera4 {
 /// <summary>
 /// FFXIVClientStructs.FFXIV.Client.Game.Control.GameCameraManager with some additional fields
 /// </summary>
-[StructLayout(LayoutKind.Explicit, Size = 0x180)]
+[StructLayout(LayoutKind.Explicit, Size = 0x190)]
 public unsafe partial struct GameCameraManager {
     public static GameCameraManager* Instance() => (GameCameraManager*)Control.Instance();
 
@@ -134,7 +134,7 @@ public unsafe partial struct GameCameraManager {
     [FieldOffset(0x48)] public int ActiveCameraIndex;
     [FieldOffset(0x4C)] public int PreviousCameraIndex;
 
-    [FieldOffset(0x60)] public CameraBase UnkCamera; // not a pointer
+    [FieldOffset(0x60)] public GameCameraBase UnkCamera; // not a pointer
 
     public GameCamera* GetActiveCamera() => (GameCamera*)CameraManager.Instance();
 }
