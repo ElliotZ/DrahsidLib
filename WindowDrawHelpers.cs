@@ -1,8 +1,6 @@
 ﻿using Dalamud.Utility;
 using FFXIVClientStructs.FFXIV.Common.Math;
-using ImGuiNET;
-using System;
-using System.Reflection.Emit;
+using Dalamud.Bindings.ImGui;
 
 namespace DrahsidLib;
 
@@ -135,7 +133,7 @@ public static class WindowDrawHelpers {
     /// <param name="tooltip">Tooltip to display for the float.</param>
     /// <returns></returns>
     public static bool DrawInputTextTooltip(string label, ref string cvar, string tooltip, uint maxlength = 32) {
-        bool ret = ImGui.InputText(label, ref cvar, maxlength);
+        bool ret = ImGuiDL.InputText(label, ref cvar, maxlength);
 
         if (tooltip.IsNullOrEmpty() == false) {
             DrawTooltip(tooltip);

@@ -1,7 +1,7 @@
 ﻿using Dalamud.Interface.Utility;
 using FFXIVClientStructs.FFXIV.Common.Math;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using ImGuiNET;
+using Dalamud.Bindings.ImGui;
 using System;
 
 namespace DrahsidLib;
