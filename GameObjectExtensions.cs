@@ -5,9 +5,12 @@ using System;
 namespace DrahsidLib;
 
 public unsafe static class GameObjectExtensions {
+    const int CursorHeightOffset = 0x124;
+    const float HeadHeightOffset = -0.2f;
+
     public unsafe static float GetCursorHeight(this IGameObject thisx)
     {
-        return Marshal.PtrToStructure<float>(thisx.Address + 0x114);
+        return Marshal.PtrToStructure<float>(thisx.Address + CursorHeightOffset);
     }
 
     public unsafe static bool TargetIsTargetable(this IGameObject thisx) {
@@ -22,7 +25,7 @@ public unsafe static class GameObjectExtensions {
     public unsafe static Vector3 GetHeadPosition(this IGameObject thisx)
     {
         Vector3 pos = thisx.Position;
-        pos.Y += thisx.GetCursorHeight() - 0.2f;
+        pos.Y += thisx.GetCursorHeight() - HeadHeightOffset;
         return pos;
     }
 }
